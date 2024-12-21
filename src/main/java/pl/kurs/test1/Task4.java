@@ -29,6 +29,7 @@ public class Task4 {
             showNumWithMostNumberOfDivisors(finalNumbers);
             showPrimeNumbers(finalNumbers);
         }
+        scanner.close();
     }
 
     static void showMedian(double[] array) {
