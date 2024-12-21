@@ -62,15 +62,20 @@ public class Task4 {
 
     static void showNumWithMostNumberOfDivisors(double[] array) {
         int currentMostNumDivisors = 0;
-        double numWithMostNumDivisors = array[0];
+        ArrayList<Double> numsWithMostDivisors = new ArrayList<>();
         for (double num : array) {
             int divisors = getNumDivisors(num);
+
+
             if (divisors > currentMostNumDivisors) {
                 currentMostNumDivisors = divisors;
-                numWithMostNumDivisors = num;
+                numsWithMostDivisors.clear(); // Reset the list
+                numsWithMostDivisors.add(num);
+            } else if (divisors == currentMostNumDivisors) {
+                numsWithMostDivisors.add(num);
             }
         }
-        System.out.println("The number with the most divisors: " + numWithMostNumDivisors);
+        System.out.println("The number with the most divisors: " + numsWithMostDivisors);
     }
 
     static boolean isPrime(double n) {
@@ -83,7 +88,7 @@ public class Task4 {
     }
 
     static void showPrimeNumbers(double[] array) {
-        ArrayList<Integer> primeNumbers = new ArrayList<Integer>();
+        ArrayList<Integer> primeNumbers = new ArrayList<>();
         for (double n : array) {
             if (isPrime(n)) primeNumbers.add((int) n);
         }
