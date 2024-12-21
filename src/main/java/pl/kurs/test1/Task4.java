@@ -69,7 +69,7 @@ public class Task4 {
 
             if (divisors > currentMostNumDivisors) {
                 currentMostNumDivisors = divisors;
-                numsWithMostDivisors.clear(); // Reset the list
+                numsWithMostDivisors.clear();
                 numsWithMostDivisors.add(num);
             } else if (divisors == currentMostNumDivisors) {
                 numsWithMostDivisors.add(num);
