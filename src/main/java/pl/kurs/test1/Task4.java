@@ -41,17 +41,20 @@ public class Task4 {
     }
 
     static int getNumDivisors(double number) {
-        if (number != Math.floor(number))
-            return 0;
-        int n = Math.abs((int)number);
         int divisiorsNumber = 0;
+        double absoluteNumber = Math.abs(number);
 
-        for (int l = 1; l <= Math.sqrt(n); l++) {
-            if (n % l == 0) {
-                ++divisiorsNumber;
-                if (l != n / l) {
-                    ++divisiorsNumber;
+        if (number == Math.floor(number)) {
+            int n = (int) absoluteNumber;
+            for (int i = 1; i <= Math.sqrt(n); i++) {
+                if (n % i == 0) {
+                    divisiorsNumber++;
+                    if (i != n / i) divisiorsNumber++;
                 }
+            }
+        } else {
+            for (double i = 0.1; i <= absoluteNumber; i += 0.1) {
+                if (absoluteNumber / i == Math.floor(absoluteNumber / i)) divisiorsNumber++;
             }
         }
         return divisiorsNumber;
@@ -60,26 +63,22 @@ public class Task4 {
     static void showNumWithMostNumberOfDivisors(double[] array) {
         int currentMostNumDivisors = 0;
         double numWithMostNumDivisors = array[0];
-        for (int k = 0; k < array.length; k++) {
-            int divisors = getNumDivisors(array[k]);
+        for (double num : array) {
+            int divisors = getNumDivisors(num);
             if (divisors > currentMostNumDivisors) {
                 currentMostNumDivisors = divisors;
-                numWithMostNumDivisors = array[k];
-
+                numWithMostNumDivisors = num;
             }
+
         }
         System.out.println("The number with the most divisors: " + numWithMostNumDivisors);
     }
 
     static boolean isPrime(double n) {
-        if (n < 2 || n != Math.floor(n)) {
-            return false;
-        }
+        if (n < 2 || n != Math.floor(n)) return false;
 
         for (int i = 2; i < n; i++) {
-            if (n % i == 0) {
-                return false;
-            }
+            if (n % i == 0) return false;
         }
         return true;
     }
@@ -87,9 +86,7 @@ public class Task4 {
     static void showPrimeNumbers(double[] array) {
         ArrayList<Integer> primeNumbers = new ArrayList<Integer>();
         for (double n : array) {
-            if (isPrime(n)) {
-                primeNumbers.add((int) n);
-            }
+            if (isPrime(n)) primeNumbers.add((int) n);
         }
 
         if (!primeNumbers.isEmpty()) {
