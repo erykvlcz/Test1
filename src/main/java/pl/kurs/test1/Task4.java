@@ -69,7 +69,6 @@ public class Task4 {
                 currentMostNumDivisors = divisors;
                 numWithMostNumDivisors = num;
             }
-
         }
         System.out.println("The number with the most divisors: " + numWithMostNumDivisors);
     }
